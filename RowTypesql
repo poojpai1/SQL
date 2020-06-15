@@ -1,0 +1,23 @@
+DECLARE
+
+EmpRec employee%ROWTYPE;
+
+BEGIN
+
+Select fname, salary
+into emprec.fname, emprec.salary
+from employee
+where ssn = &ENTER_SSN;
+
+dbms_output.put_line('employee is ' || emprec.fname || ' earns $'|| emprec.salary);
+
+EXCEPTION
+
+ /* when no_data_found then
+    dbms_output.put_line('invalid entry');*/
+    
+  when others then
+    dbms_output.put_line('Invalid entry');
+    
+  
+END;
